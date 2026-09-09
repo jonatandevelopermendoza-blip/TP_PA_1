@@ -1,0 +1,3 @@
+Continuar con los estilos de bootstrap
+continuar con el form del ingreso a la app
+revisar estructura y continuar con los detalles
