@@ -1,7 +1,7 @@
 <?php
 require_once 'funciones.php';
 requerirAutenticacion();
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
