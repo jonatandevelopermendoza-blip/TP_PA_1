@@ -1,11 +1,13 @@
 <?php
+require_once 'funciones.php';
+requerirAutenticacion();
 session_start();
-
+/*
 // Verificar autenticación
 if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] !== true) {
     header('Location: index.php');
     exit();
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="es">
