@@ -43,13 +43,13 @@ $titulo_pagina = 'Inicio';
                                         </a>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <a href="#" class="btn btn-outline-success w-100 py-3">
+                                        <a href="usuarios.php" class="btn btn-outline-success w-100 py-3">
                                             <i class="bi bi-people fs-4 d-block mb-1"></i>
                                             Usuarios
                                         </a>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <a href="#" class="btn btn-outline-warning w-100 py-3">
+                                        <a href="prestamos.php" class="btn btn-outline-warning w-100 py-3">
                                             <i class="bi bi-clock-history fs-4 d-block mb-1"></i>
                                             Préstamos
                                         </a>

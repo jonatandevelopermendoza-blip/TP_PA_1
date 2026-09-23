@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const togglePassword = document.getElementById('togglePassword');
     const captchaImagen = document.getElementById('captchaImagen');
     const recargarCaptcha = document.getElementById('recargarCaptcha');
-
+    
     if (togglePassword) {
         togglePassword.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -97,5 +97,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    validarFormulario();
+   // validarFormulario();
 });

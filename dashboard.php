@@ -1,7 +1,7 @@
 <?php
 require_once 'funciones.php';
 requerirAutenticacion();
-session_start();
+//session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,26 +16,26 @@ session_start();
     
     <main class="contenedor-principal">
         <div class="dashboard-container">
-            <div class="mensaje-bienvenida">
-                <h1>¡<?php echo $_SESSION['mensaje']; ?>!</h1>
+           <div class="mensaje-bienvenida">
+                <img src="imagenes/logoBibliotecaFCYT_h_nuevo.jpg" alt="Logo">
                 <p>Bienvenido al sistema de administración de la Biblioteca Digital</p>
-            </div>
+           </div>
             
             <div class="dashboard-cards">
                 <div class="card">
                     <h3>Libros</h3>
                     <p>Gestión de libros</p>
-                    <a href="#" class="btn-card">Administrar</a>
+                    <a href="libros.php" class="btn-card">Administrar</a>
                 </div>
                 <div class="card">
                     <h3>Usuarios</h3>
                     <p>Gestión de usuarios</p>
-                    <a href="#" class="btn-card">Administrar</a>
+                    <a href="usuarios.php" class="btn-card">Administrar</a>
                 </div>
                 <div class="card">
                     <h3>Préstamos</h3>
                     <p>Control de préstamos</p>
-                    <a href="#" class="btn-card">Administrar</a>
+                    <a href="prestamos.php" class="btn-card">Administrar</a>
                 </div>
             </div>
             
