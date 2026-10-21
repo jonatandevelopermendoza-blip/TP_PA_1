@@ -96,14 +96,7 @@ $titulo_pagina = 'Iniciar Sesión';
                                                 id="btnLogin" disabled>
                                             <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
                                         </button>
-                                    </div>
-
-                                    <div class="text-center mt-3">
-                                        <small class="text-muted">
-                                            <i class="bi bi-info-circle"></i>
-                                            Usuario: fcytuader | Contraseña: programacionavanzada
-                                        </small>
-                                    </div>
+                                    </div> 
                                 </form>
                             </div>
                         </div>
