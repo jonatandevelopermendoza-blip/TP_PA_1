@@ -31,12 +31,10 @@ if (!validarCaptcha($captcha)) {
     exit();
 }
 
-// --- ACÁ ESTÁ EL CAMBIO PRINCIPAL ---
 $usuarioModel = new Usuario();
 $datosUsuario = $usuarioModel->autenticar($usuario, $password);
 
 if ($datosUsuario) {
-    // Login correcto
     session_regenerate_id(true);
     
     $_SESSION['usuario_id']     = $datosUsuario['id'];
@@ -45,7 +43,6 @@ if ($datosUsuario) {
     $_SESSION['autenticado']    = true;
     $_SESSION['fecha_login']    = date('Y-m-d H:i:s');
     
-    // Guardamos el nombre en 'usuario' para no romper el header actual que usa $_SESSION['usuario']
     $_SESSION['usuario']        = $datosUsuario['nombre'];
     
     header('Location: inicio.php');
