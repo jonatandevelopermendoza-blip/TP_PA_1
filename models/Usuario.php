@@ -8,9 +8,7 @@ class Usuario {
         $this->db = Database::getConnection();
     }
 
-    // ============================================
-    // AUTENTICACIÓN (ya existía)
-    // ============================================
+    
     public function autenticar($login, $password) {
         $stmt = $this->db->prepare(
             "SELECT * FROM usuarios 
@@ -29,9 +27,6 @@ class Usuario {
         return false;
     }
 
-    // ============================================
-    // CRUD
-    // ============================================
     public function listar() {
         $sql = "SELECT u.*, 
                        (SELECT COUNT(*) FROM prestamos p WHERE p.usuario_id = u.id) AS tiene_prestamos
@@ -75,7 +70,6 @@ class Usuario {
 
     public function insertar($datos) {
         try {
-            // Regla: si ya existe un Admin, no se puede crear otro
             if ($datos['rol'] === 'admin' && $this->existeAdmin()) {
                 return 'admin_existente';
             }
@@ -106,22 +100,18 @@ class Usuario {
                 return false;
             }
 
-            // Regla: el Admin no puede cambiar de rol
             if ($usuarioActual['rol'] === 'admin' && $datos['rol'] !== 'admin') {
                 return 'admin_no_degradable';
             }
 
-            // Regla: el Admin no puede desactivarse
             if ($usuarioActual['rol'] === 'admin' && !$datos['activo']) {
                 return 'admin_no_desactivable';
             }
 
-            // Regla: no se puede crear un segundo Admin desde el form
             if ($datos['rol'] === 'admin' && $usuarioActual['rol'] !== 'admin' && $this->existeAdmin()) {
                 return 'admin_existente';
             }
 
-            // Si viene password nueva, la hasheamos; si no, mantenemos la actual
             if (!empty($datos['password'])) {
                 $hash = password_hash($datos['password'], PASSWORD_BCRYPT);
                 $stmt = $this->db->prepare(
@@ -166,12 +156,10 @@ class Usuario {
                 return false;
             }
 
-            // Regla: no se puede eliminar al Admin
             if ($usuario['rol'] === 'admin') {
                 return 'admin_no_eliminable';
             }
 
-            // Regla: no se puede eliminar si tiene préstamos (históricos o activos)
             $stmt = $this->db->prepare("SELECT COUNT(*) FROM prestamos WHERE usuario_id = :id");
             $stmt->execute([':id' => $id]);
             if ((int)$stmt->fetchColumn() > 0) {
