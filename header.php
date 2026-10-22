@@ -32,6 +32,9 @@ require_once __DIR__ . '/funciones.php';
                             <span class="navbar-text text-info fw-bold">
                                 <i class="bi bi-person-check-fill me-1"></i>
                                 Logueado como: <?php echo htmlspecialchars($_SESSION['usuario']); ?>
+                                <span class="badge bg-info text-dark ms-1">
+                                    <?php echo ucfirst($_SESSION['usuario_rol']); ?>
+                                </span>
                             </span>
                         </li>
                         <li class="nav-item">
@@ -40,18 +43,30 @@ require_once __DIR__ . '/funciones.php';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php">
-                                <i class="bi bi-speedometer2"></i> Dashboard
+                            <a class="nav-link" href="libros.php">
+                                <i class="bi bi-book"></i> Libros
                             </a>
                         </li>
+                        <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="usuarios.php">
+                                    <i class="bi bi-people"></i> Usuarios
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        <?php if ($_SESSION['usuario_rol'] === 'admin' || $_SESSION['usuario_rol'] === 'bibliotecario'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="prestamos.php">
+                                    <i class="bi bi-clock-history"></i> Préstamos
+                                </a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
-                               role="button" data-bs-toggle="dropdown">
+                            role="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-person-circle"></i> Mi Cuenta
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Perfil</a></li>
-                                <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item text-danger" href="logout.php">
                                         <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
