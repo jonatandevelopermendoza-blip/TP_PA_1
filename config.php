@@ -1,4 +1,5 @@
 <?php
+
 define('APP_NAME', 'Biblioteca Digital');
 define('APP_VERSION', '2.0.0');
 

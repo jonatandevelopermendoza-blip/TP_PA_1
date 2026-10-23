@@ -11,12 +11,14 @@ require_once __DIR__ . '/funciones.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <div class="container">
             <a class="navbar-brand" href="<?php echo estaAutenticado() ? 'inicio.php' : 'index.php'; ?>">
-                <img src="imagenes\FCyT-SinLeyenda-Uader-ColorNegativo.png" alt="Logo" height="40"
+                <img src="imagenes/logoBibliotecaFCYT_h_nuevo.jpg" alt="Logo" height="40"
                      class="d-inline-block align-text-top me-2">
                 <?php echo APP_NAME; ?>
             </a>
@@ -47,6 +49,7 @@ require_once __DIR__ . '/funciones.php';
                                 <i class="bi bi-book"></i> Libros
                             </a>
                         </li>
+
                         <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="usuarios.php">
@@ -54,16 +57,26 @@ require_once __DIR__ . '/funciones.php';
                                 </a>
                             </li>
                         <?php endif; ?>
-                        <?php if ($_SESSION['usuario_rol'] === 'admin' || $_SESSION['usuario_rol'] === 'bibliotecario'): ?>
+
+                        <?php if ($_SESSION['usuario_rol'] === 'bibliotecario'): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="prestamos.php">
                                     <i class="bi bi-clock-history"></i> Préstamos
                                 </a>
                             </li>
                         <?php endif; ?>
+
+                        <?php if ($_SESSION['usuario_rol'] === 'usuario'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="mis-prestamos.php">
+                                    <i class="bi bi-journal-bookmark"></i> Mis Préstamos
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown"
-                            role="button" data-bs-toggle="dropdown">
+                               role="button" data-bs-toggle="dropdown">
                                 <i class="bi bi-person-circle"></i> Mi Cuenta
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -85,3 +98,4 @@ require_once __DIR__ . '/funciones.php';
             </div>
         </div>
     </nav>
+    

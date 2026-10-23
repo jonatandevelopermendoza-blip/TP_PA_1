@@ -37,7 +37,7 @@ class Libro {
         try {
             $stmt = $this->db->prepare(
                 "INSERT INTO libros (titulo, autor, isbn, categoria, anio_publicacion, stock_total, stock_disponible)
-                 VALUES (:titulo, :autor, :isbn, :categoria, :anio, :stock_total, :stock_total)"
+                 VALUES (:titulo, :autor, :isbn, :categoria, :anio, :stock_total, :stock_disponible)"
             );
             $stmt->execute([
                 ':titulo'      => $datos['titulo'],
@@ -46,9 +46,11 @@ class Libro {
                 ':categoria'   => $datos['categoria'] ?: null,
                 ':anio'        => $datos['anio_publicacion'] ?: null,
                 ':stock_total' => (int)$datos['stock_total'],
+                ':stock_disponible' => (int)$datos['stock_total'],
             ]);
             return $this->db->lastInsertId();
         } catch (PDOException $e) {
+                    
             return false;
         }
     }
